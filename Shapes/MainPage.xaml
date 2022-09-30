@@ -8,7 +8,25 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-
+    <Grid Margin="10,0,0,89">
+        <Canvas x:Name="MainPageCanvas" RenderTransformOrigin="0.5,0.5" Width="1024" Height="778">
+            <Canvas.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFA8BFF7" Offset="1"/>
+                </LinearGradientBrush>
+            </Canvas.Background>
+            <Image x:Name="Elsie" Height="324" Canvas.Left="312" Canvas.Top="227" Width="400"
+                   Source="/Assets/Elsie-1024x1024.png" 
+                   ManipulationMode="TranslateX,TranslateY" 
+                   ManipulationStarted="Img_ManipulationStarted" 
+                   ManipulationDelta="Img_ManipulationDelta" 
+                   ManipulationCompleted="Img_ManipulationCompleted">
+                <Image.RenderTransform>
+                    <CompositeTransform x:Name="mytransform"/>
+                </Image.RenderTransform>
+            </Image>
+            <Button x:Name="HelloButton" Content="Hello, Elsie!" Canvas.Left="462" Canvas.Top="190" Click="HelloButton_Click" VerticalAlignment="Top" RenderTransformOrigin="1.04,-1.969"/>
+        </Canvas>
     </Grid>
 </Page>

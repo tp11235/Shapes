@@ -26,5 +26,33 @@ namespace Shapes
         {
             this.InitializeComponent();
         }
+
+        private async void HelloButton_Click(object sender, RoutedEventArgs e)
+        {
+            MediaElement mediaElement = new MediaElement();
+            var synth = new Windows.Media.SpeechSynthesis.SpeechSynthesizer();
+            var textToPlay = "Elsie says miaow!";
+            Windows.Media.SpeechSynthesis.SpeechSynthesisStream stream = await
+                synth.SynthesizeTextToStreamAsync(textToPlay);
+            mediaElement.SetSource(stream, stream.ContentType);
+            mediaElement.Play();
+        }
+
+        void Img_ManipulationStarted(object sender, ManipulationStartedRoutedEventArgs e)
+        {
+            Elsie.Opacity = 0.5;
+        }
+
+        void Img_ManipulationDelta(object sender, ManipulationDeltaRoutedEventArgs e)
+        {
+            mytransform.TranslateX += e.Delta.Translation.X;
+            mytransform.TranslateY += e.Delta.Translation.Y;
+        }
+
+        void Img_ManipulationCompleted(object sender, ManipulationCompletedRoutedEventArgs e)
+        {
+
+            Elsie.Opacity = 1;
+        }
     }
 }
